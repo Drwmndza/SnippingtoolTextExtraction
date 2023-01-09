@@ -1,3 +1,4 @@
+# importing libraries 
 import sys
 from PyQt5 import QtWidgets, QtCore, QtGui
 import tkinter as tk
@@ -7,6 +8,7 @@ import pyperclip
 
 IMAGE_PATH = 'capture.jpg'
 
+#SNIPPING TOOL
 class MyWidget(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
@@ -51,7 +53,8 @@ class MyWidget(QtWidgets.QWidget):
         img = ImageGrab.grab(bbox=(x1, y1, x2, y2))
         img.save(IMAGE_PATH)
         ocrStuff()
-
+        
+#Tesseract OCR
 def ocrStuff():
     pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
     text = pytesseract.image_to_string(IMAGE_PATH, lang = 'eng')
